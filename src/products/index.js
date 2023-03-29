@@ -35,4 +35,17 @@ productsRouter.get("/:productId", async (req, res, next) => {
     }
 })
 
+productsRouter.put("/:productId", async (req, res, next) => {
+    try {
+        const [numberOfUpdatedRows, updatedRecords] = await ProductsModel.update(req.body, { where: { productId: req.params.productId }, returning: true })
+        if (numberOfUpdatedRows === 1) {
+            res.send(updatedRecords[0])
+        } else {
+            next(createHttpError(404, `Product with id ${req.params.productId} not found!`))
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
 export default productsRouter
