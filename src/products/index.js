@@ -48,4 +48,17 @@ productsRouter.put("/:productId", async (req, res, next) => {
     }
 })
 
+productsRouter.delete("/:productId", async (req, res, next) => {
+    try {
+        const numberOfDeletedRows = await ProductsModel.destroy({ where: { productId: req.params.productId } })
+        if (numberOfDeletedRows === 1) {
+            res.status(204).send()
+        } else {
+            next(createHttpError(404, `Product with id ${req.params.productId} not found!`))
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
 export default productsRouter
