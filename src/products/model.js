@@ -1,15 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db.js";
 
-// "id": 1,
-// "name": TEXT,
-// "category": TEXT, 
-// "description": TEXT, 
-// "imageUrl":TEXT,
-// "price":NUMBER,
-// "createdAt": "DATE",
-// "updatedAt": "DATE", 
-
 const ProductsModel = sequelize.define(
     "product",
     {
