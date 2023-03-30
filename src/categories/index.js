@@ -12,4 +12,15 @@ categoriesRouter.post("/", async (req, res, next) => {
     }
 })
 
+categoriesRouter.get("/", async (req, res, next) => {
+    try {
+        const categories = await categoriesModel.findAll({
+            attributes: ["categoryName", "categoryId"],
+        })
+        res.send(categories)
+    } catch (error) {
+        next(error)
+    }
+})
+
 export default categoriesRouter
