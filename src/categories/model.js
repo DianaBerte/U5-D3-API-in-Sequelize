@@ -13,4 +13,5 @@ const categoriesModel = sequelize.define("category", {
     },
 })
 
+
 export default categoriesModel
