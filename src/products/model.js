@@ -38,11 +38,11 @@ const ProductsModel = sequelize.define(
 //Many to many relationship
 ProductsModel.belongsToMany(categoriesModel, {
     through: productsCategoriesModel,
-    foreignKey: { name: "id", allowNull: false }
+    foreignKey: { name: "productId", allowNull: false }
 })
 categoriesModel.belongsToMany(ProductsModel, {
     through: productsCategoriesModel,
-    foreignKey: { name: "id", allowNull: false },
+    foreignKey: { name: "categoryId", allowNull: false },
 })
 
 export default ProductsModel
